@@ -5,10 +5,10 @@ class SeqList(object):
         self.data = [None] * self.max # 初始化顺序表数组
     
     def is_empty(self):
-        pass
+        return self.num is 0
     
     def is_full(self):
-        pass
+        return self.num is self.max
     
     def __getitem__(self, i):
         """
@@ -17,7 +17,12 @@ class SeqList(object):
         Args:
             i ([type]): [description]
         """
-        pass
+        if not isinstance(i, int):
+            raise TypeError
+        if 0<= i < self.num:
+            return self.data[i]
+        else:
+            raise IndexError
     
     def __setitem__(self, key, value):
         """
@@ -27,7 +32,12 @@ class SeqList(object):
             key ([type]): [description]
             value ([type]): [description]
         """
-        pass
+        if not isinstance(key, int):
+            raise TypeError
+        if 0<= key < self.num:
+            self.data[key] = value
+        else:
+            raise IndexError
     
     def getLoc(self, value):
         """
@@ -36,13 +46,16 @@ class SeqList(object):
         Args:
             value ([type]): [description]
         """
-        pass
+        for i in range(self.num):
+            if self.data[i] == value:
+                return i
+        return -1
     
     def Count(self):
         """
         统计线性表中元素的个数
         """
-        pass
+        return self.num
     
     def appendLast(self, value):
         """
@@ -51,7 +64,12 @@ class SeqList(object):
         Args:
             value ([type]): [description]
         """
-        pass
+        if self.num >= self.max:
+            print("The list is full")
+            return
+        else:
+            self.data[self.num] = value
+            self.num += 1
     
     def insert(self, i, value):
         """
@@ -61,7 +79,14 @@ class SeqList(object):
             i ([type]): [description]
             value ([type]): [description]
         """
-        pass
+        if not isinstance(i, int):
+            raise TypeError
+        if i < 0 and i > self.num:
+            raise IndexError
+        for j in range(self.num,i,-1):
+            self.date[j] = self.date[j-1]
+        self.date[i] = value
+        self.num += 1
     
     def remove(self, i):
         """
@@ -70,16 +95,25 @@ class SeqList(object):
         Args:
             i ([type]): [description]
         """
-        pass
+        if not isinstance(i,int):
+            raise TypeError
+        if i < 0 and i >=self.num:
+            raise IndexError
+        for j in range(i,self.num):
+            self.date[j] = self.date[j+1]
+        self.num -= 1
     
     def printList(self):
         """
         打印线性表中所有元素
         """
+        for i in range(0,self.num):
+            print self.date[i]
         pass
     
     def destroy(self):
         """
         销毁线性表
         """
+        self.__init__()
         pass
