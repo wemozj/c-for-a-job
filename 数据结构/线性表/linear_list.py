@@ -109,11 +109,9 @@ class SeqList(object):
         """
         for i in range(0,self.num):
             print self.date[i]
-        pass
     
     def destroy(self):
         """
         销毁线性表
         """
         self.__init__()
-        pass
