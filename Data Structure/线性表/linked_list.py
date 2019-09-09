@@ -19,15 +19,17 @@ class Linked_List:
     单向链表对象
     """
     def __init__(self):
-        self._head = None
+        self._head = None # 定义链表的首结点
     
     def is_empty(self):
         return self._head is None
     
     def prepend(self, elem):
+        # 前端插入结点
         self._head = LNode(elem, self._head)
         
     def pop(self):
+        # 弹出首结点中的元素
         if self._head is None:
             # 无结点，引发异常
             raise LinkedListUnderflow("in pop")
@@ -36,15 +38,17 @@ class Linked_List:
         return e
     
     def append(self, elem):
+        # 后端（末尾）添加结点元素
         if self._head is None:
-            self._head = LNode(elem, next_None)
+            self.prepend(elem)
             return
         p = self._head
         while p.next is not None:
             p = p.next
-        p.next = LNode(elem, next_=None)
+        p.next = LNode(elem)
 
     def pop_last(self):
+        # 弹出最后一个元素
         """
         pop last elem
         """
@@ -74,6 +78,13 @@ class Linked_List:
             p = p.next
     
     def filter(self, pred):
+        """
+        定义成一个可迭代的函数
+        yield 
+        
+        Args:
+            pred (condition): [description]
+        """
         p = self._head
         while p is not None:
             if pred(p.elem):
