@@ -143,3 +143,9 @@ python语言的正则表达式功能由标准包re提供。
 
 ![1568037797269](C:\Users\wemo\AppData\Roaming\Typora\typora-user-images\1568037797269.png)
 
+#### 应用六、
+
+![](https://raw.githubusercontent.com/wemozj/image/master/20190910222044.png)
+
+![](https://raw.githubusercontent.com/wemozj/image/master/20190910221836.png)
+
