@@ -149,3 +149,58 @@ python语言的正则表达式功能由标准包re提供。
 
 ![](https://raw.githubusercontent.com/wemozj/image/master/20190910221836.png)
 
+
+
+### 应用七、实现strStr()
+
+![](https://raw.githubusercontent.com/wemozj/image/master/20190918094821.png)
+
+```python
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if needle == '':
+            return 0
+        length_comp = len(needle)
+        length_sour = len(haystack)
+        for i in range(length_sour):
+            if (i + length_comp) > length_sour:
+                return -1
+            part = haystack[i:i+length_comp]
+            if part == needle:
+                return i
+        return -1
+```
+
+
+
+### 应用八、最长公共前缀
+
+![](https://raw.githubusercontent.com/wemozj/image/master/20190918110101.png)
+
+
+
+```python
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if not strs:
+            return ''
+        ss = list(map(set, zip(*strs)))
+        res = ''
+        for i, x in enumerate(ss):
+            x = list(x)
+            if len(x) > 1:
+                break
+            res += x[0]
+            
+        return res
+# 对于示例，['flower', 'flow', 'flight']， ss输出： [{'f'}, {'l'}, {'o', 'i'}, {'w', 'g'}]
+# list(map(list, zip(*strs))) : [['f', 'f', 'f'], ['l', 'l', 'l'], ['o', 'o', 'i'], ['w', 'w', 'g']]
+# 真是好方法
+```
+
+下面再贴一个针对python的奇技淫巧：
+
+![1568775892855](C:\Users\wemo\AppData\Roaming\Typora\typora-user-images\1568775892855.png)
+
+
+
